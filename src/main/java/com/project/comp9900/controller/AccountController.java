@@ -33,7 +33,7 @@ public class AccountController {
     /**
      * 登录验证
      */
-    @GetMapping
+    @GetMapping("login")
     public Object login(@RequestParam String username,
                         @RequestParam String password) {
         return accountService.userLogin(username,password);
@@ -44,6 +44,7 @@ public class AccountController {
      *
      * return 生成的特定tokenID 以便于之后用户验证
      */
+    @GetMapping("logon")
     public Object logon(@RequestBody User user) {
         return accountService.userLogon(user);
     }
