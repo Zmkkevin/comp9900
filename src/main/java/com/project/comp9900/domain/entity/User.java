@@ -10,7 +10,7 @@ import io.swagger.models.auth.In;
 import lombok.Builder;
 import lombok.Data;
 
-@ApiModel("系统用户")
+@ApiModel("user_info")
 @Data
 @Builder
 @TableName("user")
@@ -19,28 +19,28 @@ public class User {
     @TableId(type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty("登录名,备用字段,目前随机自动生成")
+    @ApiModelProperty("username")
     private String username;
 
-    @ApiModelProperty("密码")
+    @ApiModelProperty("password")
     private String password;
 
-    @ApiModelProperty("姓名")
+    @ApiModelProperty("name")
     private String name;
 
-    @ApiModelProperty("身份ID")
+    @ApiModelProperty("idCardNum")
     private Integer idCardNum;
 
-    @ApiModelProperty("手机号")
+    @ApiModelProperty("phone")
     private String phone;
 
-    @ApiModelProperty("状态")
+    @ApiModelProperty("status")
     private String status;
 
-    @ApiModelProperty("角色级别")
+    @ApiModelProperty("level")
     private String level;
 
-    @ApiModelProperty("删除标志")
+    @ApiModelProperty("IsDeleted")
     @TableLogic
     private Integer IsDeleted;
 }
