@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("index")
+@RequestMapping("Auth")
 public class AccountController {
 
     @Resource
