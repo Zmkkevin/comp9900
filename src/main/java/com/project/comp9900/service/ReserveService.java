@@ -53,7 +53,8 @@ public class ReserveService {
 
     public Order findOrderById(Integer orderId){
         return orderMapper.selectOne(new QueryWrapper<Order>()
-                .eq("order_id",orderId));
+                .eq("order_id",orderId)
+                .eq("id_deleted",0));
     }
 
     public Object CancelById(Order order) {

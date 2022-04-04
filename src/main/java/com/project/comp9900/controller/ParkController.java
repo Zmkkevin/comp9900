@@ -25,7 +25,16 @@ public class ParkController {
      * 上传停车位信息
      */
     @PostMapping("/newPark")
-    public Object findParkList(@RequestBody Parking parking) {
-        return parkService.findParkList(parking);
+    public Object newPark(@RequestBody Parking parking) {
+        return parkService.newPark(parking);
     }
+
+    /**
+     * 上传停车位信息
+     */
+    @PostMapping("/deletePark")
+    public Object deletePark(@RequestBody Parking parking) {
+        return parkService.deletePark(parking);
+    }
+
 }
