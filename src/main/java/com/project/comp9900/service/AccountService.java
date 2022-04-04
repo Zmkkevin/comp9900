@@ -10,7 +10,9 @@ import com.project.comp9900.enums.HttpStatusEnum;
 import com.project.comp9900.utils.JsonData;
 import com.project.comp9900.utils.token.TokenHelper;
 import com.project.comp9900.utils.token.TokenModel;
+import io.netty.util.internal.ObjectUtil;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Service;
@@ -36,9 +38,9 @@ public class AccountService {
     /**
      * 登录
      */
-    public Object userLogin(String username, String password) {
-        User user = userMapper.findByName(username);
-        if(user == null || !user.getPassword().equals(password)) {
+    public Object userLogin(User logInUser) {
+        User user = userMapper.findByName(logInUser.getUsername());
+        if(user == null || !user.getPassword().equals(logInUser.getPassword())) {
             return JsonData.buildError(HttpStatusEnum.NOT_FOUND.getCode(), MessageConstant.USERNAME_OR_PASSWORD_ERROR);
         }
         TokenModel model = tokenHelper.create(user.getId());
@@ -74,13 +76,15 @@ public class AccountService {
     /**
      * 注册账户
      */
-    public Object userLogon(User user) {
-        if(user == null) {
+    public Object userLogon(User newUser) {
+        //检查用户是否存在
+        User user = userMapper.findByName(newUser.getUsername());
+        if(!ObjectUtils.isEmpty(user)) {
             //注册用户名已经存在：
             return JsonData.buildError(HttpStatusEnum.NOT_FOUND.getCode(), MessageConstant.USER_ERROR);
         }else{
             //开始进行注册：数据入库
-            userMapper.insert(user);
+            userMapper.insert(newUser);
         }
         return JsonData.buildSuccess("LogOn success");
     }

@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("Auth")
+@RequestMapping("/auth")
 public class AccountController {
 
     @Resource
@@ -33,10 +33,9 @@ public class AccountController {
     /**
      * 登录验证
      */
-    @GetMapping("login")
-    public Object login(@RequestParam String username,
-                        @RequestParam String password) {
-        return accountService.userLogin(username,password);
+    @GetMapping("/login")
+    public Object login(@RequestBody User newuser) {
+        return accountService.userLogin(newuser);
     }
 
     /**
@@ -44,7 +43,7 @@ public class AccountController {
      *
      * return 生成的特定tokenID 以便于之后用户验证
      */
-    @GetMapping("logon")
+    @GetMapping("/logon")
     public Object logon(@RequestBody User user) {
         return accountService.userLogon(user);
     }
@@ -53,7 +52,7 @@ public class AccountController {
      * 老用户修改密码功能
      */
     @ApiOperation("修改密码")
-    @GetMapping("changePassword")
+    @GetMapping("/changePassword")
     public void changePassword(@RequestBody ChangeQuery changeQuery) {
         accountService.changePassword(changeQuery);
     }
