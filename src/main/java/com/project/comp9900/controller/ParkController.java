@@ -30,7 +30,7 @@ public class ParkController {
     }
 
     /**
-     * 上传停车位信息
+     * 删除停车位信息
      */
     @PostMapping("/deletePark")
     public Object deletePark(@RequestBody Parking parking) {
