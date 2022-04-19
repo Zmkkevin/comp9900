@@ -37,4 +37,12 @@ public class ParkController {
         return parkService.deletePark(parking);
     }
 
+    /**
+     * 更新停车位信息
+     */
+    @PostMapping("/deletePark")
+    public Object updatePark(@RequestBody Parking parking) {
+        return parkService.updatePark(parking);
+    }
+
 }

@@ -29,4 +29,10 @@ public class ParkService {
                 .eq("park_id",parking.getId()));
         return JsonData.buildSuccess("新车位信息删除成功");
     }
+
+    public Object updatePark(Parking parking) {
+        parkingMapper.update(Parking.builder().IsUsing(parking.getIsUsing()).Location(parking.getLocation()).providerId(parking.getProviderId()).build(), new QueryWrapper<Parking>()
+                .eq("park_id",parking.getId()));
+        return JsonData.buildSuccess("新车位信息更新成功");
+    }
 }

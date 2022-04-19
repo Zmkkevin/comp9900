@@ -51,7 +51,7 @@ public class Order {
     /**
      * orderPrice
      */
-    private String orderPrice;
+    private Double orderPrice;
 
     @TableLogic
     private Integer IsDeleted;
