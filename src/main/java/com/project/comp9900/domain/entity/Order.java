@@ -1,5 +1,6 @@
 package com.project.comp9900.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -15,7 +16,7 @@ public class Order {
     /**
      * id
      */
-    @TableId("id")
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
     /**
